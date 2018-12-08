@@ -32,3 +32,23 @@
             padding: 1px;
             margin: 25px auto;
           }
+
+#input--field {
+        position:absolute;
+        bottom: 20px;
+        right: 200px;
+        border-radius: 5px;
+        height:30px;
+        width:200px;
+}
+#button--search {
+    position:absolute;
+    bottom: 20px;
+    right: 400px;
+    border-radius: 5px;
+    height:30px;
+    width:50px;
+}
+
+
+}

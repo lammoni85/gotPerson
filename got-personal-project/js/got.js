@@ -19,10 +19,17 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
   // console.log(document.querySelectorAll('.div--portrait img'));
   // setOnclick(userDatas);
   // setOnArray(userDatas);
-  descriptionPerson(userDatas, 0);
+  // descriptionPerson(userDatas, 0);
 
-  
-  //if (callNumber !== -1) {alert(callNumber); descriptionPerson(userDatas, callNumber);}
+  //searchByUser(userDatas);
+// events();
+//var btn = document.querySelector('#button--search');
+//btn.addEventListener('click', searchByUser(userDatas));
+//var arr = ['first', 'second', 'last'];
+// hozzáadom az event listenert
+//searchButtonEventListener(userDatas);
+  // if (callNumber !== -1) {alert(callNumber); descriptionPerson(userDatas, callNumber);}
+  sample(userDatas);
 }
 
 getGameOfThronesCharacterDatas(
@@ -131,11 +138,71 @@ function setOnn(n, array) {
 }
 
 function setOn() {
-  //alert(n);
+  // alert(n);
   alert(this);
-  //callNumber = n;
+  // callNumber = n;
 
-  return n;
+  //return n;
 }
 
 // function megjelenik(tomb,index);
+function searchByUser(userDatas) {
+  var thing = document.querySelector('#input--field').value;
+  var i = 0;
+  found = -1;
+  while (i < userDatas.length) {
+    if (userDatas.hasOwnProperty(i) && userDatas.name.toLowerCase() === thing.toLowerCase()) {
+      found = i;
+      i = userDatas.length;
+    }
+    i++;
+  }
+  if (found !== -1) {
+    descriptionPerson(userDatas, found);
+  } else {
+    document.querySelector('#description').innerHTML = 'nincs ilyen név';
+  }
+}
+
+function events() {
+  
+}
+
+
+
+
+function most (){
+  alert('ez magától');
+}
+
+
+
+function search(arr){
+  var searchText = document.querySelector('#input--field').value.toLowerCase();
+  for(var key in arr){
+      if(arr[key].toLowerCase() === searchText) {
+          alert(`I found it! Index: ${key}, Data: ${arr[key]}`);
+          return;
+      }
+  }
+  alert('Element not found!');
+}
+
+function searchButtonEventListener(arr){
+  var element = document.querySelector('button--search');
+  // Az addEventListener 2. paramétere egy callback function
+  // Ennek alapba nem tudunk paramétert adni, hiszen ha ezt írjuk: functionAmitÁtadunk(param)
+  // akkor ezzel meg is hívjuk a függvényt
+  // Ezért a callback nem csinál mást, mint hogy meghívja a kiszervezett search függvényt,
+  // aminek már át tudjuk adni a tömböt, hiszen eléri a felső scope-ban lévő változókat
+  element.addEventListener('click', function() { search(arr) });
+}
+
+function sample(arr){
+  // Itt egy tömb, ebbe szeretnék keresni
+  //var arr = ['first', 'second', 'last'];
+  // hozzáadom az event listenert
+  searchButtonEventListener(arr);
+}
+
+//sample();
