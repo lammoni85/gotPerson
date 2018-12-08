@@ -15,6 +15,8 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
   // Innen hívhatod meg a többi függvényed
   portraitOrderByName(userDatas);
   portraitsDisplay(userDatas);
+  //console.log(document.querySelectorAll('.div--portrait img'));
+  setOnclick(userDatas);
 }
 
 getGameOfThronesCharacterDatas(
@@ -47,7 +49,7 @@ function portraitsDisplay(userDatas) {
       document.querySelector('#portraits').innerHTML +=
       `
       <div class="div div--portrait"> 
-      <img src="${userDatas[i].portrait}" alt="${userDatas[i].name}">
+      <img src="${userDatas[i].portrait}" alt="${userDatas[i].name}" onclick="">
     <p class="portrait--name">
     ${userDatas[i].name}
     </p>
@@ -55,5 +57,40 @@ function portraitsDisplay(userDatas) {
     }
 
     i++;
+  }
+}
+
+function searchPerson(array, nameSearch) {
+  var found;
+  for (var i = 0; i < array.length; i++) {
+    if (array[i].name === nameSearch) {
+      found = i;
+      i = array.length;
+    }
+  }
+  return found;
+}
+
+function descriptionPerson(array, index) {
+  document.querySelector('#description').innerHTML =
+`
+<div class="div div--description"> 
+<img src="${array[index].picture}" alt="descript--${array[index].name}">
+<p class="descript--name">
+${array[index].name}
+</p>
+</div>`;
+}
+
+
+function setOnclick(array) {
+  var portraitImg = document.querySelectorAll('.div--portrait img');
+  var img;
+  for (var i = 0; i < portraitImg.length; i++) {
+    img = portraitImg[i];
+    console.log(img);
+    img.onclick=descriptionPerson(array, searchPerson(array, img.alt));
+    //img.setAttribute('onclick', descriptionPerson(array, searchPerson(array, img.alt)));
+    console.log(img);
   }
 }
