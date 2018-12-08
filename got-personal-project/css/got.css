@@ -1,0 +1,17 @@
+.div--main-picture {
+        width:80%;
+        background-image: url("../assets/site/mapblue.jpg");
+        height:100%;
+        display:inline-block;
+        position:absolute;
+        top: 0;
+        left: 0;
+    }
+.div--main-search {
+        width:20%;
+        background-color:#afafaf;
+        height:100%;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;}
