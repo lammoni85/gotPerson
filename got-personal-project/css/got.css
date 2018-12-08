@@ -21,3 +21,14 @@
         position: absolute;
         top: 0;
         right: 0;}
+
+.div--portrait {
+            width: 11%;
+            display: inline-block;
+            font-family: 'Cinzel Decorative', cursive;
+            text-align: center;
+            font-size: 90%;
+            font-weight: bolder;
+            padding: 1px;
+            margin: 25px auto;
+          }
