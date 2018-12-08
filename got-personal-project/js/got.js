@@ -10,13 +10,19 @@ function getGameOfThronesCharacterDatas(url, callbackFunc) {
 }
 
 function successGetGameOfThronesCharacterDatas(xhttp) {
+  var callNumber = -1;
   // Nem szabad globálisba kitenni a userDatas-t!
   var userDatas = JSON.parse(xhttp.responseText);
   // Innen hívhatod meg a többi függvényed
   portraitOrderByName(userDatas);
   portraitsDisplay(userDatas);
-  //console.log(document.querySelectorAll('.div--portrait img'));
-  setOnclick(userDatas);
+  // console.log(document.querySelectorAll('.div--portrait img'));
+  // setOnclick(userDatas);
+  // setOnArray(userDatas);
+  descriptionPerson(userDatas, 0);
+
+  
+  //if (callNumber !== -1) {alert(callNumber); descriptionPerson(userDatas, callNumber);}
 }
 
 getGameOfThronesCharacterDatas(
@@ -42,14 +48,16 @@ function portraitOrderByName(userDatas) {
 
 
 function portraitsDisplay(userDatas) {
+  var alive = [];
   document.querySelector('#portraits').innerHTML = '';
   var i = 0;
   while (i < userDatas.length) {
     if (userDatas.hasOwnProperty(i) && !userDatas[i].dead) {
+      alive.push(userDatas.name);
       document.querySelector('#portraits').innerHTML +=
       `
       <div class="div div--portrait"> 
-      <img src="${userDatas[i].portrait}" alt="${userDatas[i].name}" onclick="">
+      <img src="${userDatas[i].portrait}" alt="${userDatas[i].name}" onclick="setOn()">
     <p class="portrait--name">
     ${userDatas[i].name}
     </p>
@@ -58,7 +66,9 @@ function portraitsDisplay(userDatas) {
 
     i++;
   }
+  return alive;
 }
+
 
 function searchPerson(array, nameSearch) {
   var found;
@@ -89,8 +99,43 @@ function setOnclick(array) {
   for (var i = 0; i < portraitImg.length; i++) {
     img = portraitImg[i];
     console.log(img);
-    img.onclick=descriptionPerson(array, searchPerson(array, img.alt));
-    //img.setAttribute('onclick', descriptionPerson(array, searchPerson(array, img.alt)));
+    img.onclick = descriptionPerson(array, searchPerson(array, img.alt));
+    // img.setAttribute('onclick', descriptionPerson(array, searchPerson(array, img.alt)));
     console.log(img);
   }
 }
+function setOnArray(array) {
+// setOnn(n,array);
+
+}
+
+
+function setOnn(n, array) {
+  document.querySelector('#description').innerHTML = n;
+  `
+  <div class="div div--description"> 
+  <img src="${array[n].picture}" alt="descript--${array[n].name}">
+  <p class="descript--name">
+  ${array[n].name}
+  </p>
+  </div>`;
+
+
+  // descriptionPerson(userData, 0);
+  // console.log(n);
+  // console.log(document.querySelectorAll('.div--portrait img').style);
+  // var tomb=document.querySelectorAll('.div--portrait');
+  // var img
+  // console.log(tomb);
+  // document.querySelectorAll('.div--portrait img')[n].style.width;
+}
+
+function setOn() {
+  //alert(n);
+  alert(this);
+  //callNumber = n;
+
+  return n;
+}
+
+// function megjelenik(tomb,index);
