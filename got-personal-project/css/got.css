@@ -73,12 +73,20 @@
             font-weight: bolder;
             padding: 1px;
             margin: 25px auto;
-          }
-          
-.div--portrait p {
+}
+
+.div--portrait img:hover {width:130px;
+        color:red;
 
 
 }
+          
+ .div--portrait p:hover {
+        color:red;
+
+
+}
+
 
 #input--field {
         position:absolute;

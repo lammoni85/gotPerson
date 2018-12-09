@@ -36,15 +36,15 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
     // hozzáadom az event listenert
     searchButtonEventListener(userDatas);
   }
-  
+
   sample();
-  
-  
-  
-  //sample(userDatas);
+
+
+
+  // sample(userDatas);
   obj = userDatas;
 
-  
+
   return obj;
 }
 
@@ -105,14 +105,13 @@ function searchPerson(array, nameSearch) {
 }
 
 function findHouse(array, index) {
-  if (array[index].house){
-  return `<img src="assets/houses/${array[index].house}.png" id="description--image" alt="${array[index].house}" >`
-  
+  if (array[index].house) {
+    return `<img src="assets/houses/${array[index].house}.png" id="description--image" alt="${array[index].house}" >`;
   }
   return '';
-  }
+}
 
-  
+
 function descriptionPerson(array, index) {
   document.querySelector('#description').innerHTML =
 `<img src="${array[index].picture}" id="description--picture" alt="description--${array[index].name}">
@@ -127,7 +126,6 @@ ${findHouse(array, index)}
 ${array[index].bio}
 </p>`;
 }
-
 
 
 function setOnclick(array) {
@@ -206,11 +204,13 @@ function search(arr) {
   for (var key in arr) {
     if (arr[key].name.toLowerCase() === searchText) {
       descriptionPerson(arr, key);
-      //alert(`I found it! Index: ${key}, Data: ${arr[key]}`);
+      // alert(`I found it! Index: ${key}, Data: ${arr[key]}`);
       return;
     }
   }
-  //alert('Element not found!');
+  document.querySelector('#input--field').value = 'Character not found';
+  return searchText;
+  // alert('Element not found!');
 }
 
 function searchButtonEventListener(arr) {
@@ -224,7 +224,5 @@ function searchButtonEventListener(arr) {
 }
 
 
-
-
 // var obj=successGetGameOfThronesCharacterDatas(xhttp);
-//console.log(obj[obj.length - 1]);
+// console.log(obj[obj.length - 1]);
