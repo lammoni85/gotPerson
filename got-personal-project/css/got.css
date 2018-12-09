@@ -1,3 +1,41 @@
+#description--descript{
+        color:white;
+        font-size:25px;
+        margin-left: 20px;
+}
+#description--name{
+        color:white;
+        font-size:30px;
+        font-weight: bolder;
+        margin-left: 20px;
+}
+
+#description--name div{
+        position:relative;
+        right:0;
+}
+
+#description--picture  {
+        border-top:white solid 5px;
+        margin-left: 20px;
+       
+        width: 80%;
+}
+
+.div--description{
+        position:absolute;
+        display:block;
+        top:100px;
+
+}
+
+
+.div--logo {position:relative;
+        margin: 25px auto;
+        display:block;
+        
+}
+
 .div--main-picture {
         width:80%;
         background-image: url("../assets/site/mapblue.jpg");
@@ -15,29 +53,38 @@
     }
 .div--main-search {
         width:20%;
-        background-color:#afafaf;
+        background-color:#303030;
         height:100%;
         display: inline-block;
         position: absolute;
         top: 0;
-        right: 0;}
+        right: 0;
+}
+.div--margin { left:20px;
 
+
+}
 .div--portrait {
             width: 11%;
             display: inline-block;
-            font-family: 'Cinzel Decorative', cursive;
+            font-family: 'Comic Sans MS', cursive;
             text-align: center;
             font-size: 90%;
             font-weight: bolder;
             padding: 1px;
             margin: 25px auto;
           }
+          
+.div--portrait p {
+
+
+}
 
 #input--field {
         position:absolute;
         bottom: 20px;
-        right: 200px;
-        border-radius: 5px;
+        right: 170px;
+        border-radius: 2px;
         height:30px;
         width:200px;
 }
@@ -45,10 +92,15 @@
     position:absolute;
     bottom: 20px;
     right: 400px;
-    border-radius: 5px;
-    height:30px;
+    border-radius: 2px;
+    height:50px;
     width:50px;
+    font-size:40px;
+    color:white;
+    background-color:#303030;
 }
 
 
+#got--picture {width:400px;
+        
 }

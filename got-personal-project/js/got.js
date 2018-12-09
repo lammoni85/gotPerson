@@ -82,7 +82,7 @@ function portraitsDisplay(userDatas) {
       <div class="div div--portrait"> 
       <img src="${userDatas[i].portrait}" alt="${userDatas[i].name}" onclick="setOn()">
     <p class="portrait--name">
-    ${userDatas[i].name}
+    ${userDatas[i].name.toUpperCase()}
     </p>
       </div>`;
     }
@@ -106,7 +106,7 @@ function searchPerson(array, nameSearch) {
 
 function findHouse(array, index) {
   if (array[index].house){
-  return `<img src="assets/houses/${array[index].house}.png" alt="${array[index].house}" >`
+  return `<img src="assets/houses/${array[index].house}.png" id="description--image" alt="${array[index].house}" >`
   
   }
   return '';
@@ -115,17 +115,17 @@ function findHouse(array, index) {
   
 function descriptionPerson(array, index) {
   document.querySelector('#description').innerHTML =
-`
-<div class="div div--description"> 
-<img src="${array[index].picture}" alt="descript--${array[index].name}">
-<p class="descript--name">
+`<img src="${array[index].picture}" id="description--picture" alt="description--${array[index].name}">
+<p id="description--name">
 ${array[index].name}
+
 ${findHouse(array, index)}
+
 </p>
-<p class="descript--description">
+
+<p id="description--descript">
 ${array[index].bio}
-</p>
-</div>`;
+</p>`;
 }
 
 
@@ -149,13 +149,10 @@ function setOnArray(array) {
 
 function setOnn(n, array) {
   document.querySelector('#description').innerHTML = n;
-  `
-  <div class="div div--description"> 
-  <img src="${array[n].picture}" alt="descript--${array[n].name}">
+  `<img src="${array[n].picture}" alt="descript--${array[n].name}">
   <p class="descript--name">
   ${array[n].name}
-  </p>
-  </div>`;
+  </p>`;
 
 
   // descriptionPerson(userData, 0);
@@ -213,7 +210,7 @@ function search(arr) {
       return;
     }
   }
-  alert('Element not found!');
+  //alert('Element not found!');
 }
 
 function searchButtonEventListener(arr) {
