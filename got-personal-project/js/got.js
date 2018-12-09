@@ -1,3 +1,4 @@
+var obj;
 function getGameOfThronesCharacterDatas(url, callbackFunc) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -21,15 +22,30 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
   // setOnArray(userDatas);
   // descriptionPerson(userDatas, 0);
 
-  //searchByUser(userDatas);
-// events();
-//var btn = document.querySelector('#button--search');
-//btn.addEventListener('click', searchByUser(userDatas));
-//var arr = ['first', 'second', 'last'];
-// hozzáadom az event listenert
-//searchButtonEventListener(userDatas);
+  // searchByUser(userDatas);
+  // events();
+  // var btn = document.querySelector('#button--search');
+  // btn.addEventListener('click', searchByUser(userDatas));
+  // var arr = ['first', 'second', 'last'];
+  // hozzáadom az event listenert
+  // searchButtonEventListener(userDatas);
   // if (callNumber !== -1) {alert(callNumber); descriptionPerson(userDatas, callNumber);}
-  sample(userDatas);
+  function sample() {
+    // Itt egy tömb, ebbe szeretnék keresni
+    // var arr = ['first', 'second', 'last'];
+    // hozzáadom az event listenert
+    searchButtonEventListener(userDatas);
+  }
+  
+  sample();
+  
+  
+  
+  //sample(userDatas);
+  obj = userDatas;
+
+  
+  return obj;
 }
 
 getGameOfThronesCharacterDatas(
@@ -88,6 +104,15 @@ function searchPerson(array, nameSearch) {
   return found;
 }
 
+function findHouse(array, index) {
+  if (array[index].house){
+  return `<img src="assets/houses/${array[index].house}.png" alt="${array[index].house}" >`
+  
+  }
+  return '';
+  }
+
+  
 function descriptionPerson(array, index) {
   document.querySelector('#description').innerHTML =
 `
@@ -95,9 +120,14 @@ function descriptionPerson(array, index) {
 <img src="${array[index].picture}" alt="descript--${array[index].name}">
 <p class="descript--name">
 ${array[index].name}
+${findHouse(array, index)}
+</p>
+<p class="descript--description">
+${array[index].bio}
 </p>
 </div>`;
 }
+
 
 
 function setOnclick(array) {
@@ -139,17 +169,17 @@ function setOnn(n, array) {
 
 function setOn() {
   // alert(n);
-  alert(this);
+  // alert(this);
   // callNumber = n;
 
-  //return n;
+  // return n;
 }
 
 // function megjelenik(tomb,index);
 function searchByUser(userDatas) {
   var thing = document.querySelector('#input--field').value;
   var i = 0;
-  found = -1;
+  var found = -1;
   while (i < userDatas.length) {
     if (userDatas.hasOwnProperty(i) && userDatas.name.toLowerCase() === thing.toLowerCase()) {
       found = i;
@@ -165,44 +195,39 @@ function searchByUser(userDatas) {
 }
 
 function events() {
-  
+
 }
 
 
-
-
-function most (){
+function most() {
   alert('ez magától');
 }
 
 
-
-function search(arr){
+function search(arr) {
   var searchText = document.querySelector('#input--field').value.toLowerCase();
-  for(var key in arr){
-      if(arr[key].toLowerCase() === searchText) {
-          alert(`I found it! Index: ${key}, Data: ${arr[key]}`);
-          return;
-      }
+  for (var key in arr) {
+    if (arr[key].name.toLowerCase() === searchText) {
+      descriptionPerson(arr, key);
+      //alert(`I found it! Index: ${key}, Data: ${arr[key]}`);
+      return;
+    }
   }
   alert('Element not found!');
 }
 
-function searchButtonEventListener(arr){
-  var element = document.querySelector('button--search');
+function searchButtonEventListener(arr) {
+  var element = document.querySelector('#button--search');
   // Az addEventListener 2. paramétere egy callback function
   // Ennek alapba nem tudunk paramétert adni, hiszen ha ezt írjuk: functionAmitÁtadunk(param)
   // akkor ezzel meg is hívjuk a függvényt
   // Ezért a callback nem csinál mást, mint hogy meghívja a kiszervezett search függvényt,
   // aminek már át tudjuk adni a tömböt, hiszen eléri a felső scope-ban lévő változókat
-  element.addEventListener('click', function() { search(arr) });
+  element.addEventListener('click', function () { search(arr); });
 }
 
-function sample(arr){
-  // Itt egy tömb, ebbe szeretnék keresni
-  //var arr = ['first', 'second', 'last'];
-  // hozzáadom az event listenert
-  searchButtonEventListener(arr);
-}
 
-//sample();
+
+
+// var obj=successGetGameOfThronesCharacterDatas(xhttp);
+//console.log(obj[obj.length - 1]);
